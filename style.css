@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #6D5BFF; /* 현대적인 파란색/보라색 계열 */
-    --secondary-color: #E0E0E0; /* 밝은 회색 */
-    --text-color: #212529; /* 거의 검은색에 가까운 짙은 회색 */
-    --background-color: #F9F7FD; /* 매우 옅은 라벤더/핑크 */
+    --primary-color: #6D5BFF; 
+    --secondary-color: #E0E0E0;
+    --text-color: #212529;
+    --background-color: #F9F7FD;
     --card-background: #FFFFFF;
     --shadow-color: rgba(0, 0, 0, 0.05);
     --body-font: 'Noto Sans KR', sans-serif;
@@ -10,7 +10,7 @@
 
 body {
     font-family: var(--body-font);
-    background-color: var(--background-color);
+    background: radial-gradient(circle at top left, #F9F7FD 0%, #E6E0FF 100%);
     color: var(--text-color);
     margin: 0;
     display: flex;
@@ -26,7 +26,7 @@ body {
     background-color: var(--card-background);
     border-radius: 24px;
     box-shadow: 0 8px 32px var(--shadow-color);
-    padding: 32px;
+    padding: 36px;
     box-sizing: border-box;
 }
 
@@ -39,8 +39,9 @@ body {
 }
 
 .main-line {
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.2;
     display: block;
     color: var(--text-color);
 }
@@ -49,7 +50,7 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: 400;
-    color: #6c757d; /* 부드러운 회색 */
+    color: #6c757d;
     margin: 0 0 32px;
 }
 

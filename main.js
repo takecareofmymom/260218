@@ -26,21 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Step 2: Custom Filter ---
     const filtersContainer = document.getElementById('filters');
     const filterOptions = {
-        hospital: ['집중 재활치료', '인공투석 가능', '호스피스', '전문의 상주', '간호간병 통합 서비스'],
-        'nursing-home': ['공공기관 인증 A등급', '치매 전담실', '단독 건물(넓은 정원)', '종교 활동 지원', '1인실 보유'],
-        'visiting-care': ['치매 전문 보호사', '가사 지원 중심', '장기 경력자', '남성·여성 보호사 선택', '야간·주말 가능'],
-        'day-care': ['송영(셔틀) 서비스', '인지 프로그램 우수', '물리치료 장비', '식단 사진 공유', '야간 연장 운영'],
+        hospital: ['집중 재활치료', '인공 신장 투석', '호스피스 완화의료', '암 요양 전문', '대학병원 신속 협진', '재활의학과 전문의', '신경과 전문의', '1-2인실 보유', '신축/리모델링', '자연 친화 환경'],
+        'nursing-home': ['치매 전담실 운영', '와상환자 케어 전문', '야간 상주 인력 많음', '건보 A등급', '다양한 인지/신체 프로그램', '종교 활동 지원', '텃밭 가꾸기', '1인실 보유', '부부 동반 입소', '송영(셔틀) 서비스'],
+        'visiting-care': ['치매 전문 교육 이수', '10년 이상 장기 경력', '남성/여성 보호사 선택', '특정 질환 케어 경험', '가사 지원 중심', '병원 동행 적극 지원', '주말/야간 케어', '단기/긴급 돌봄', '운전 가능 보호사', '반려동물 케어 가능'],
+        'day-care': ['송영(셔틀) 서비스', '야간 연장 운영', '주말 운영', '고품질 식사/간식', '전문 물리치료사 상주', '대학 연계 인지 프로그램', '미술/음악 치료', '넓고 쾌적한 시설', '최신 재활/운동 장비', '전용 쉼터/수면실'],
     };
 
     function populateFilters(service) {
         filtersContainer.innerHTML = '';
-        // selectedFilters = []; // Do not reset filters here to allow back and forth navigation
         filterOptions[service].forEach(option => {
             const filterElement = document.createElement('div');
             filterElement.classList.add('filter-option');
             filterElement.textContent = option;
             filterElement.dataset.value = option;
-            // Restore selection if it exists
             if (selectedFilters.includes(option)) {
                 filterElement.classList.add('selected');
             }
@@ -80,9 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Step 4: Results ---
     function generateResults() {
         const resultContainer = document.querySelector('.result-container');
-        resultContainer.innerHTML = ''; // Clear previous results
+        resultContainer.innerHTML = ''; 
 
-        // Update match copy
         const userName = "어머님";
         const matchPercentage = 90 + Math.floor(Math.random() * 9);
         document.querySelector('#step4 .match-copy').textContent = `${userName}의 조건에 ${matchPercentage}% 일치하는 '최적의 시설' 3곳을 찾았습니다.`;
