@@ -98,22 +98,37 @@ body {
 }
 
 /* Filter Options (Step 2) */
-#filters {
+#filters { 
+    margin: 32px 0; 
+}
+
+.filter-category {
+    margin-bottom: 24px;
+}
+
+.filter-category-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.filter-options-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin: 32px 0;
+    gap: 10px;
 }
 
 .filter-option {
     background-color: var(--card-background);
     border: 1px solid #ddd;
     color: #6c757d;
-    padding: 10px 20px;
+    padding: 10px 16px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     transition: all 0.2s ease-in-out;
 }
 
