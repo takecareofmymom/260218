@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
         step4: document.getElementById('step4'),
     };
 
+    const errorMessages = {
+        step2: document.getElementById('step2-error'),
+        location: document.getElementById('location-error'),
+        specialNeeds: document.getElementById('special-needs-error'),
+    };
+
     let selectedService = '';
     let selectedFilters = [];
 
@@ -14,11 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
         steps[stepId].style.display = 'block';
     };
 
+    const clearErrorMessages = () => {
+        Object.values(errorMessages).forEach(error => error.textContent = '');
+    }
+
     // --- Step 1: Service Selection ---
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', () => {
             selectedService = card.dataset.service;
             populateFilters(selectedService);
+            clearErrorMessages();
             showStep('step2');
         });
     });
@@ -59,13 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('#step2 .next-btn').addEventListener('click', () => {
+        clearErrorMessages();
         if (selectedFilters.length === 0) {
-            alert('가장 중요하게 생각하는 가치를 1개 이상 선택해주세요.');
+            errorMessages.step2.textContent = '가장 중요하게 생각하는 가치를 1개 이상 선택해주세요.';
         } else {
             showStep('step3');
         }
     });
-    document.querySelector('#step2 .back-btn').addEventListener('click', () => showStep('step1'));
+    document.querySelector('#step2 .back-btn').addEventListener('click', () => {
+        clearErrorMessages();
+        showStep('step1');
+    });
 
     // --- Step 3: Common Items ---
     const budgetSlider = document.getElementById('budget');
@@ -76,18 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('#step3 .next-btn').addEventListener('click', () => {
+        clearErrorMessages();
         const location = document.getElementById('location').value;
         const specialNeeds = document.getElementById('special-needs').value;
+        let isValid = true;
         if (!location) {
-            alert('어디와 가까운 곳을 찾으시나요?');
-        } else if (!specialNeeds) {
-            alert('특별히 고려해야 할 생활 습관이 있으신가요?');
-        } else {
+            errorMessages.location.textContent = '어디와 가까운 곳을 찾으시나요?';
+            isValid = false;
+        }
+        if (!specialNeeds) {
+            errorMessages.specialNeeds.textContent = '특별히 고려해야 할 생활 습관이 있으신가요?';
+            isValid = false;
+        }
+        
+        if (isValid) {
             generateResults();
             showStep('step4');
         }
     });
-    document.querySelector('#step3 .back-btn').addEventListener('click', () => showStep('step2'));
+    document.querySelector('#step3 .back-btn').addEventListener('click', () => {
+        clearErrorMessages();
+        showStep('step2');
+    });
 
     // --- Step 4: Results ---
     function generateResults() {
@@ -135,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('special-needs').value = '';
         budgetSlider.value = 2750000;
         budgetValue.textContent = '2,750,000원';
+        clearErrorMessages();
         showStep('step1');
     });
 

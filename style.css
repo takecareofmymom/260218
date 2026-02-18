@@ -138,6 +138,21 @@ body {
 .form-group input[type="range"] { width: 100%; }
 #budget-value { text-align: center; display: block; margin-top: 8px; font-weight: 500; font-size: 16px; }
 
+/* Error Messages */
+.error-message {
+    color: #D32F2F; /* A Material Design red */
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    text-align: center;
+    min-height: 1.2em; /* Reserve space to avoid layout shifts */
+}
+
+.form-group .error-message {
+    text-align: left;
+    margin-top: 8px;
+}
+
 /* Button Group */
 .button-group {
     display: flex;
