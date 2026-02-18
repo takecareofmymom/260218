@@ -5,7 +5,6 @@
     --background-color: #FFFDF8; /* 매우 밝은 크림색 */
     --card-background: #FFFFFF;
     --shadow-color: rgba(0, 0, 0, 0.08);
-    --cute-font: 'Gaegu', cursive;
     --body-font: 'Noto Sans KR', sans-serif;
 }
 
@@ -18,7 +17,6 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
 }
 
 .container {
@@ -27,20 +25,18 @@ body {
     background-color: var(--card-background);
     border-radius: 28px;
     box-shadow: 0 10px 40px var(--shadow-color);
-    position: relative;
     padding: 24px;
-    /* 자식 요소인 hero-images가 container를 벗어나지 않도록 설정 */
-    overflow: hidden;
+    position: relative;
+    overflow: hidden; /* 자식 요소인 hero-images가 넘치지 않도록 */
 }
 
-/* 좌우 이미지 */
 .hero-images {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* 콘텐츠 뒤에 위치 */
+    z-index: 0; 
 }
 
 .hero-img {
@@ -49,6 +45,7 @@ body {
     height: 180px;
     bottom: 15%;
     opacity: 0.15;
+    border-radius: 50%; /* 이미지를 원형으로 만듭니다 */
 }
 
 .hero-img.daughter {
@@ -61,11 +58,13 @@ body {
     transform: rotate(-15deg);
 }
 
-/* 콘텐츠가 이미지 위에 오도록 z-index 설정 */
+
+/* 각 단계와 콘텐츠가 이미지 위에 오도록 z-index 설정 */
 .step {
     position: relative;
     z-index: 1;
 }
+
 
 /* 메인 문구 */
 .main-copy {
@@ -81,8 +80,7 @@ body {
 }
 
 .main-line {
-    font-family: var(--cute-font);
-    font-size: 38px;
+    font-size: 36px; /* 폰트 변경에 따라 크기 조정 */
     font-weight: 700;
     display: block;
     color: var(--primary-color);
@@ -93,7 +91,7 @@ body {
 
 .main-line::before, .main-line::after {
     content: '♥';
-    font-family: sans-serif; /* 하트 모양이 폰트에 따라 깨지지 않도록 */
+    font-family: sans-serif; 
     position: absolute;
     font-size: 24px;
     color: var(--secondary-color);
@@ -114,15 +112,14 @@ body {
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1) rotate(0); }
-    50% { transform: scale(1.2) rotate(5deg); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
 .sub-copy {
     text-align: center;
-    font-family: var(--cute-font);
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px; /* 폰트 변경에 따라 크기 조정 */
+    font-weight: 400;
     color: #888;
     margin: 30px 0 24px;
 }
@@ -153,8 +150,7 @@ body {
 
 .card h3 {
     margin: 0 0 4px;
-    font-family: var(--cute-font);
-    font-size: 24px;
+    font-size: 22px; /* 폰트 변경에 따라 크기 조정 */
     font-weight: 700;
     color: var(--text-color);
 }
@@ -167,8 +163,7 @@ body {
 
 /* 이후 단계 스타일 */
 .step-title {
-    font-family: var(--cute-font);
-    font-size: 32px;
+    font-size: 28px; /* 폰트 변경에 따라 크기 조정 */
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 8px;
