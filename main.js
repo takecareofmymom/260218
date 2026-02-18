@@ -58,7 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.querySelector('#step2 .next-btn').addEventListener('click', () => showStep('step3'));
+    document.querySelector('#step2 .next-btn').addEventListener('click', () => {
+        if (selectedFilters.length === 0) {
+            alert('가장 중요하게 생각하는 가치를 1개 이상 선택해주세요.');
+        } else {
+            showStep('step3');
+        }
+    });
     document.querySelector('#step2 .back-btn').addEventListener('click', () => showStep('step1'));
 
     // --- Step 3: Common Items ---
@@ -70,8 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('#step3 .next-btn').addEventListener('click', () => {
-        generateResults();
-        showStep('step4');
+        const location = document.getElementById('location').value;
+        const specialNeeds = document.getElementById('special-needs').value;
+        if (!location) {
+            alert('어디와 가까운 곳을 찾으시나요?');
+        } else if (!specialNeeds) {
+            alert('특별히 고려해야 할 생활 습관이 있으신가요?');
+        } else {
+            generateResults();
+            showStep('step4');
+        }
     });
     document.querySelector('#step3 .back-btn').addEventListener('click', () => showStep('step2'));
 
