@@ -7,12 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <!-- Step 1: Intro -->
         <div id="step1" class="step">
+            <div class="hero-images">
+                <!-- 나중에 실제 이미지 파일(daughter.png, mother.png)을 assets 폴더에 추가해주세요. -->
+                <img src="assets/daughter.png" alt="자녀" class="hero-img daughter">
+                <img src="assets/mother.png" alt="어머니" class="hero-img mother">
+            </div>
             <h1 class="main-copy">
                 <span class="sub-line">엄마의 내일이 오늘보다 더 편안하도록,</span>
                 <span class="main-line">'엄마를 부탁해'가 함께합니다.</span>
@@ -20,24 +26,20 @@
             <p class="sub-copy">어떤 돌봄이 필요하신가요?</p>
             <div class="card-container">
                 <div class="card" data-service="hospital">
-                    <img src="./assets/hospital.jpg" alt="요양병원">
                     <h3>요양병원</h3>
-                    <p>전문의의 치료와 재활이 필요하신가요?</p>
+                    <p>전문의의 치료와 재활</p>
                 </div>
                 <div class="card" data-service="nursing-home">
-                    <img src="./assets/nursing-home.jpg" alt="요양원">
                     <h3>요양원</h3>
-                    <p>집처럼 편안한 생활과 돌봄이 필요하신가요?</p>
+                    <p>집처럼 편안한 생활</p>
                 </div>
                 <div class="card" data-service="visiting-care">
-                    <img src="./assets/visiting-care.jpg" alt="방문요양보호사">
-                    <h3>방문요양보호사</h3>
-                    <p>익숙한 집에서 전문 요양보호사를 만나고 싶으신가요?</p>
+                    <h3>방문요양</h3>
+                    <p>익숙한 집에서 받는 돌봄</p>
                 </div>
                 <div class="card" data-service="day-care">
-                    <img src="./assets/day-care.jpg" alt="노인유치원">
-                    <h3>노인유치원 (주야간보호)</h3>
-                    <p>낮 동안 즐거운 활동과 사회생활이 필요하신가요?</p>
+                    <h3>주야간보호</h3>
+                    <p>즐거운 낮 시간 활동</p>
                 </div>
             </div>
         </div>

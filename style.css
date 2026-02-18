@@ -1,14 +1,16 @@
 :root {
-    --primary-color: #FFB6C1; /* Light Pink */
-    --secondary-color: #FFDAB9; /* Peach */
-    --text-color: #333;
-    --background-color: #FFF8F0; /* Cream */
+    --primary-color: #FFC1A6; /* 따뜻한 피치 핑크 */
+    --secondary-color: #A6D9FF; /* 부드러운 하늘색 */
+    --text-color: #4A4A4A;
+    --background-color: #FFFDF8; /* 매우 밝은 크림색 */
     --card-background: #FFFFFF;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --cute-font: 'Gaegu', cursive;
+    --body-font: 'Noto Sans KR', sans-serif;
 }
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: var(--body-font);
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
@@ -16,6 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .container {
@@ -24,248 +27,151 @@ body {
     background-color: var(--card-background);
     border-radius: 28px;
     box-shadow: 0 10px 40px var(--shadow-color);
+    position: relative;
+    padding: 24px;
+    /* 자식 요소인 hero-images가 container를 벗어나지 않도록 설정 */
     overflow: hidden;
 }
 
-header {
-    padding: 24px;
-    border-bottom: 1px solid #F0F0F0;
+/* 좌우 이미지 */
+.hero-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* 콘텐츠 뒤에 위치 */
 }
 
-header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0;
-    text-align: center;
+.hero-img {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    bottom: 15%;
+    opacity: 0.15;
 }
 
+.hero-img.daughter {
+    left: -90px;
+    transform: rotate(15deg);
+}
+
+.hero-img.mother {
+    right: -90px;
+    transform: rotate(-15deg);
+}
+
+/* 콘텐츠가 이미지 위에 오도록 z-index 설정 */
+.step {
+    position: relative;
+    z-index: 1;
+}
+
+/* 메인 문구 */
 .main-copy {
     text-align: center;
-    margin-bottom: 40px;
-    line-height: 1.5;
+    margin: 40px 0;
+    line-height: 1.6;
 }
 
 .sub-line {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 300;
     display: block;
 }
 
 .main-line {
-    font-size: 28px;
+    font-family: var(--cute-font);
+    font-size: 38px;
     font-weight: 700;
     display: block;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 0px var(--background-color), 3px 3px 0px rgba(255, 193, 166, 0.4);
+    position: relative;
+    padding: 10px 0;
 }
 
-.step {
-    padding: 32px 24px;
+.main-line::before, .main-line::after {
+    content: '♥';
+    font-family: sans-serif; /* 하트 모양이 폰트에 따라 깨지지 않도록 */
+    position: absolute;
+    font-size: 24px;
+    color: var(--secondary-color);
+    animation: heartbeat 1.5s infinite ease-in-out;
 }
 
-.step-title {
-    font-size: 28px;
+.main-line::before {
+    left: 15%;
+    top: 0;
+    transform: rotate(-25deg);
+}
+
+.main-line::after {
+    right: 15%;
+    bottom: 0;
+    transform: rotate(25deg);
+    animation-delay: 0.3s;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1) rotate(0); }
+    50% { transform: scale(1.2) rotate(5deg); }
+}
+
+.sub-copy {
+    text-align: center;
+    font-family: var(--cute-font);
+    font-size: 22px;
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 8px;
-}
-
-.step-subtitle {
-    font-size: 16px;
     color: #888;
-    margin-bottom: 32px;
+    margin: 30px 0 24px;
 }
 
-.service-selection {
+/* 서비스 선택 버튼 */
+.card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
 .card {
-    background-color: #F9F9F9;
-    border-radius: 16px;
-    padding: 20px;
+    background-color: #FFF9F5;
+    border-radius: 20px;
+    padding: 25px 15px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 2px solid transparent;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-8px) rotate(3deg);
+    box-shadow: 0 10px 25px rgba(255, 193, 166, 0.4);
     border-color: var(--primary-color);
 }
 
-.card img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 12px;
-}
-
 .card h3 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
+    margin: 0 0 4px;
+    font-family: var(--cute-font);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-color);
 }
 
 .card p {
     font-size: 13px;
-    color: #888;
-    margin: 4px 0 0;
+    color: #999;
+    margin: 0;
 }
 
-
-#filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 24px;
-}
-
-.filter-option {
-    padding: 12px 20px;
-    background-color: #F3F3F3;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.filter-option.selected {
-    background-color: var(--primary-color);
-    color: white;
+/* 이후 단계 스타일 */
+.step-title {
+    font-family: var(--cute-font);
+    font-size: 32px;
     font-weight: 700;
-}
-
-.budget-slider {
-    margin-top: 20px;
-}
-
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 8px;
-    background: #F3F3F3;
-    border-radius: 5px;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    background: var(--primary-color);
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-.budget-display {
+    line-height: 1.4;
+    margin-bottom: 8px;
     text-align: center;
-    margin-top: 12px;
-    font-size: 20px;
-    font-weight: 700;
     color: var(--primary-color);
-}
-
-.btn-container {
-    margin-top: 32px;
-}
-
-.next-btn, .restart-btn {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.next-btn {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.next-btn:hover {
-    filter: brightness(1.05);
-}
-
-.restart-btn {
-    background-color: #EAEAEA;
-    color: #555;
-    margin-top: 12px;
-}
-
-.result-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.match-copy {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.5;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.result-card {
-    display: flex;
-    background-color: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-}
-
-.result-card img {
-    width: 120px;
-    height: 100%;
-    object-fit: cover;
-}
-
-.result-card-info {
-    padding: 16px;
-}
-
-.result-card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin: 0 0 8px;
-}
-
-.match-point {
-    font-size: 14px;
-    background-color: #FFF2F4;
-    color: #D95D7D;
-    padding: 6px 10px;
-    border-radius: 8px;
-    margin: 0 0 10px;
-    display: inline-block;
-}
-
-.review-summary {
-    font-size: 14px;
-    color: #666;
-    margin: 0 0 16px;
-}
-
-.result-card-actions {
-    display: flex;
-    gap: 8px;
-}
-
-.result-card-actions button {
-    flex: 1;
-    background-color: #F3F3F3;
-    color: #333;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
 }
