@@ -1,14 +1,84 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엄마를 부탁해</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div class="container">
+        <!-- Step 1: Intro -->
+        <div id="step1" class="step">
+            <h1 class="main-copy">엄마의 내일이 오늘보다 더 편안하도록, '엄마를 부탁해'가 함께합니다.</h1>
+            <p class="sub-copy">어떤 돌봄이 필요하신가요?</p>
+            <div class="card-container">
+                <div class="card" data-service="hospital">
+                    <img src="./assets/hospital.jpg" alt="요양병원">
+                    <h3>요양병원</h3>
+                    <p>전문의의 치료와 재활이 필요하신가요?</p>
+                </div>
+                <div class="card" data-service="nursing-home">
+                    <img src="./assets/nursing-home.jpg" alt="요양원">
+                    <h3>요양원</h3>
+                    <p>집처럼 편안한 생활과 돌봄이 필요하신가요?</p>
+                </div>
+                <div class="card" data-service="visiting-care">
+                    <img src="./assets/visiting-care.jpg" alt="방문요양보호사">
+                    <h3>방문요양보호사</h3>
+                    <p>익숙한 집에서 전문 요양보호사를 만나고 싶으신가요?</p>
+                </div>
+                <div class="card" data-service="day-care">
+                    <img src="./assets/day-care.jpg" alt="노인유치원">
+                    <h3>노인유치원 (주야간보호)</h3>
+                    <p>낮 동안 즐거운 활동과 사회생활이 필요하신가요?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Custom Filter -->
+        <div id="step2" class="step" style="display: none;">
+            <h2 class="step-title">가장 중요하게 생각하는 가치를 선택해주세요. (다중 선택 가능)</h2>
+            <div id="filters"></div>
+            <button class="next-btn">다음</button>
+        </div>
+
+        <!-- Step 3: Common Items -->
+        <div id="step3" class="step" style="display: none;">
+            <h2 class="step-title">현실적인 조건을 설정해주세요.</h2>
+            <div class="form-group">
+                <label for="location">어디와 가까운 곳을 찾으시나요?</label>
+                <input type="text" id="location" placeholder="예: 서울시 강남구">
+            </div>
+            <div class="form-group">
+                <label for="budget">월 예상 비용은 어느 정도 생각하시나요?</label>
+                <input type="range" id="budget" min="500000" max="5000000" step="100000">
+                <span id="budget-value">2,750,000원</span>
+            </div>
+            <div class="form-group">
+                <label for="start-date">언제부터 서비스 이용을 희망하시나요?</label>
+                <select id="start-date">
+                    <option>즉시</option>
+                    <option>1개월 내</option>
+                    <option>상담 후 결정</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="special-needs">특별히 고려해야 할 생활 습관이 있으신가요?</label>
+                <input type="text" id="special-needs" placeholder="예: 기독교, 당뇨식">
+            </div>
+            <button class="next-btn">결과 보기</button>
+        </div>
+
+        <!-- Step 4: Result -->
+        <div id="step4" class="step" style="display: none;">
+            <h1 class="match-copy">홍길동님의 조건에 98% 일치하는 '엄마를 위한 최적의 시설' 3곳을 찾았습니다.</h1>
+            <div class="result-container">
+                <!-- Result cards will be dynamically inserted here -->
+            </div>
+            <button class="restart-btn">다시 찾기</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
