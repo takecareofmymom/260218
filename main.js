@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', () => {
             selectedService = card.dataset.service;
+            selectedFilters = []; // Reset filters when a new service is selected
             populateFilters(selectedService);
             clearErrorMessages();
             showStep('step2');
